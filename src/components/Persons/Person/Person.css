@@ -6,3 +6,16 @@
   padding: 16px;
   text-align: center;
 }
+.red{
+  background-color: red;
+}
+.green{
+  background-color: green;
+}
+.cstmyButton{
+  background-color: red;
+}
+
+.myButton {
+  background-color: yellow;
+}
