@@ -13,17 +13,38 @@ class App extends Component {
         { id: "1", name: "sankalp", age: 21 },
         { id: "2", name: "Dhumil", age: 23 }
       ],
-      showPersons: true
+      showPersons: false
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     console.log("in App.js ComponentWillMount");
   }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log("Person.js getDerivedFromState");
+  // }
 
   componentDidMount() {
     console.log("in App.js ComponentDidMount");
   }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log("App.js component will receive props", nextProps);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("App.js shouldcomponentupdate", nextProps, nextState);
+    return true;
+  }
+
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
+    console.log("App.js componentwillupdate");
+  }
+  componentDidUpdate() {
+    console.log("App.js componentdidupdate");
+  }
+
   //to change the value dynamically
   switchNameHandler = newName => {
     this.setState({
@@ -61,7 +82,7 @@ class App extends Component {
   };
 
   render() {
-    console.log("in App.js render");
+    console.log("App.js render");
 
     const style = {
       backgroundColor: "green",
@@ -85,7 +106,6 @@ class App extends Component {
       style.backgroundColor = "red";
     }
 
-    //Returning JSX Code
     return (
       <div className="App">
         <button className="myButton">dlkd</button>
