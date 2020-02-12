@@ -47,13 +47,7 @@ class Person extends Component {
           onChange={this.props.changed}
           value={this.props.name}
         />
-        <button
-          className="myButton"
-          onChange={this.props.changed}
-          value={this.props.name}
-        >
-          skjkdjks
-        </button>
+      
       </div>
     );
   }

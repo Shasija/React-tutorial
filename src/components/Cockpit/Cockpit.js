@@ -6,6 +6,7 @@ class Cockpit extends Component {
     super(props);
     console.log("Cockpit.js Constructor");
   }
+
   UNSAFE_componentWillMount() {
     console.log("in Cockpit.js ComponentWillMount");
   }
@@ -30,6 +31,7 @@ class Cockpit extends Component {
   UNSAFE_componentWillUpdate(nextProps, nextState) {
     console.log("Cockpit.js componentwillupdate");
   }
+  
   componentDidUpdate() {
     console.log("Cockpit.js componentdidupdate");
   }
@@ -47,4 +49,3 @@ class Cockpit extends Component {
 }
 
 export default Cockpit;
-

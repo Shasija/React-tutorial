@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import Demo from "../components/Demo/Demo";
+import Aux from "../components/hoc/Aux";
 
 //Class Component
 class App extends Component {
@@ -13,7 +15,8 @@ class App extends Component {
         { id: "1", name: "sankalp", age: 21 },
         { id: "2", name: "Dhumil", age: 23 }
       ],
-      showPersons: false
+      showPersons: false,
+      toggleClicked: 0
     };
   }
 
@@ -74,6 +77,16 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
   };
 
+  //to inc value
+  clickedEventHandler = () => {
+    // this.setState({ toggleClicked: this.state.toggleClicked + 1 });
+    this.setState((prevState, props) => {
+      return {
+        toggleClicked: prevState.toggleClicked + 1
+      };
+    });
+  };
+
   //to chenge the list div onClick
   deletePersonsHandler = index => {
     const persons = [...this.state.persons];
@@ -107,11 +120,14 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <button className="myButton">dlkd</button>
+      <Aux className="App">
         <Cockpit click={this.togglePersonsHandler} />
+        <Demo
+          clickValue={this.state.toggleClicked}
+          clicked={this.clickedEventHandler}
+        />
         {persons}
-      </div>
+      </Aux>
     );
   }
 }
