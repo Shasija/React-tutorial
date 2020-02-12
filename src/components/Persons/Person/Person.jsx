@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Person.css";
-import Aux from "../../hoc/aux";
+import Aux from "../../hoc/Aux";
 
 class Person extends Component {
   constructor(props) {
