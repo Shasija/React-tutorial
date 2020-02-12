@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./Person.css";
-import aux from "../../hoc/aux";
+import Aux from "../../hoc/aux";
 
 class Person extends Component {
   constructor(props) {
     super(props);
     console.log("Constructor person");
+    this.inputEle=React.createRef();
   }
 
   UNSAFE_componentWillMount() {
@@ -19,7 +20,7 @@ class Person extends Component {
   componentDidMount() {
     console.log("Person.js DID Mount");
     if (this.props.position === 0) {
-      this.inputEle.focus();
+      this.inputEle.current.focus();
     }
   }
 
@@ -42,21 +43,19 @@ class Person extends Component {
   render() {
     console.log("Person.js render");
     return (
-      <div className="Person">
+      <Aux className="Person">
         <p onClick={this.props.click}>
           Hwy guyz {this.props.name} my age is {this.props.age} .
         </p>
         <input
-          ref={inp => {
-            this.inputEle = inp;
-          }}
+          ref={this.inputEle}
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
         />
-      </div>
+      </Aux>
     );
   }
 }
 
-export default aux(Person, "Person");
+export default Person;
