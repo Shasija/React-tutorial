@@ -3,7 +3,6 @@ import "./App.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import Demo from "../components/Demo/Demo";
-import Aux from "../components/hoc/Aux";
 
 //Class Component
 class App extends Component {
@@ -120,14 +119,14 @@ class App extends Component {
     }
 
     return (
-      <Aux className="App">
+      <div className={"App"}>
         <Cockpit click={this.togglePersonsHandler} />
         <Demo
           clickValue={this.state.toggleClicked}
           clicked={this.clickedEventHandler}
         />
         {persons}
-      </Aux>
+      </div>
     );
   }
 }

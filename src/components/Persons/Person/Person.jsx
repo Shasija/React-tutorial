@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Person.css";
+import aux from "../../hoc/aux";
 
 class Person extends Component {
   constructor(props) {
@@ -17,6 +18,9 @@ class Person extends Component {
 
   componentDidMount() {
     console.log("Person.js DID Mount");
+    if (this.props.position === 0) {
+      this.inputEle.focus();
+    }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -43,14 +47,16 @@ class Person extends Component {
           Hwy guyz {this.props.name} my age is {this.props.age} .
         </p>
         <input
+          ref={inp => {
+            this.inputEle = inp;
+          }}
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
         />
-      
       </div>
     );
   }
 }
 
-export default Person;
+export default aux(Person, "Person");

@@ -39,6 +39,7 @@ class Persons extends Component {
       return (
         <Person
           click={() => this.props.clicked(i)}
+          position={i}
           name={p.name}
           age={p.age}
           key={p.id}
