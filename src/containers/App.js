@@ -4,47 +4,54 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 import Demo from "../components/Demo/Demo";
 
+export const AuthContext = React.createContext(false);
+
 //Class Component
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log("in App.js Constructor");
+    //console.log("in App.js Constructor");
     this.state = {
       persons: [
         { id: "1", name: "sankalp", age: 21 },
         { id: "2", name: "Dhumil", age: 23 }
       ],
       showPersons: false,
-      toggleClicked: 0
+      toggleClicked: 0,
+      authenticated: false
     };
   }
 
+  loginHandler = () => {
+    this.setState({ authenticated: true });
+  };
+
   UNSAFE_componentWillMount() {
-    console.log("in App.js ComponentWillMount");
+    //console.log("in App.js ComponentWillMount");
   }
 
   // static getDerivedStateFromProps(props, state) {
-  //   console.log("Person.js getDerivedFromState");
+  //   //console.log("Person.js getDerivedFromState");
   // }
 
   componentDidMount() {
-    console.log("in App.js ComponentDidMount");
+    //console.log("in App.js ComponentDidMount");
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log("App.js component will receive props", nextProps);
+    //console.log("App.js component will receive props", nextProps);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("App.js shouldcomponentupdate", nextProps, nextState);
+    //console.log("App.js shouldcomponentupdate", nextProps, nextState);
     return true;
   }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
-    console.log("App.js componentwillupdate");
+    //console.log("App.js componentwillupdate");
   }
   componentDidUpdate() {
-    console.log("App.js componentdidupdate");
+    //console.log("App.js componentdidupdate");
   }
 
   //to change the value dynamically
@@ -94,7 +101,7 @@ class App extends Component {
   };
 
   render() {
-    console.log("App.js render");
+    //console.log("App.js render");
 
     const style = {
       backgroundColor: "green",
@@ -105,13 +112,14 @@ class App extends Component {
     };
     let persons = null;
     if (this.state.showPersons) {
-      console.log();
+      //console.log();
       persons = (
         <div>
           <Persons
             persons={this.state.persons}
             clicked={this.deletePersonsHandler}
             changed={this.nameChangeHandler}
+            
           />
         </div>
       );
@@ -119,13 +127,15 @@ class App extends Component {
     }
 
     return (
-      <div className={"App"}>
-        <Cockpit click={this.togglePersonsHandler} />
+      <div className="App">
+        <Cockpit click={this.togglePersonsHandler} login={this.loginHandler} />
         <Demo
           clickValue={this.state.toggleClicked}
           clicked={this.clickedEventHandler}
         />
-        {persons}
+        <AuthContext.Provider value={this.state.authenticated}>
+          {persons}
+        </AuthContext.Provider>
       </div>
     );
   }

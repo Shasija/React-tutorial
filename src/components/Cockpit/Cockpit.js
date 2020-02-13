@@ -8,41 +8,42 @@ class Cockpit extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    console.log("in Cockpit.js ComponentWillMount");
+    //console.log("in Cockpit.js ComponentWillMount");
   }
 
   // static getDerivedStateFromProps(props, state) {
-  //   console.log("Person.js getDerivedFromState");
+  //   //console.log("Person.js getDerivedFromState");
   // }
 
   componentDidMount() {
-    console.log("in Cockpit.js ComponentDidMount");
+    //console.log("in Cockpit.js ComponentDidMount");
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log("Cockpit.js component will receive props", nextProps);
+    //console.log("Cockpit.js component will receive props", nextProps);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("Cockpit.js shouldcomponentupdate", nextProps, nextState);
+    //console.log("Cockpit.js shouldcomponentupdate", nextProps, nextState);
     return true;
   }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
-    console.log("Cockpit.js componentwillupdate");
+    //console.log("Cockpit.js componentwillupdate");
   }
   
   componentDidUpdate() {
-    console.log("Cockpit.js componentdidupdate");
+    //console.log("Cockpit.js componentdidupdate");
   }
 
   render() {
-    console.log("Cockpit.js render");
+    //console.log("Cockpit.js render");
     return (
       <div>
         <button className="myButton" onClick={this.props.click}>
           Click Here to hide/show
         </button>
+        <button onClick={this.props.login}>LOGIN</button>
       </div>
     );
   }

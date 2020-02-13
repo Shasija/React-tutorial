@@ -19,3 +19,7 @@
 .myButton {
   background-color: yellow;
 }
+
+.Person:focus{
+  background-color: brown;
+}

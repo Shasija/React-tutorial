@@ -8,33 +8,34 @@ class Persons extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    console.log("Persons.js will mount");
+    //console.log("Persons.js will mount");
   }
 
   // static getDerivedStateFromProps(props,state){
-  //   console.log("Person.js getDerivedFromState");
+  //   //console.log("Person.js getDerivedFromState");
   // }
 
   componentDidMount() {
-    console.log("Persons.js did mount");
+    //console.log("Persons.js did mount");
+    
   }
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log("Persons.js component will receive props");
+    //console.log("Persons.js component will receive props");
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("Persons.js shouldcomponentupdate");
+    //console.log("Persons.js shouldcomponentupdate");
     return true;
   }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
-    console.log("Persons.js componentwillupdate");
+    //console.log("Persons.js componentwillupdate");
   }
   componentDidUpdate() {
-    console.log("Persons.js componentdidupdate");
+    //console.log("Persons.js componentdidupdate");
   }
   render() {
-    console.log("Persons.js render");
+    //console.log("Persons.js render");
     return this.props.persons.map((p, i) => {
       return (
         <Person
@@ -44,6 +45,7 @@ class Persons extends Component {
           age={p.age}
           key={p.id}
           changed={event => this.props.changed(event, p.id)}
+          
         />
       );
     });

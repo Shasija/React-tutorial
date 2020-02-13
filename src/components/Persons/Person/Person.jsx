@@ -1,59 +1,63 @@
 import React, { Component } from "react";
 import "./Person.css";
-import Aux from "../../hoc/Aux";
+// import Aux from "../../hoc/Aux";
+import { AuthContext } from "../../../containers/App";
 
 class Person extends Component {
   constructor(props) {
     super(props);
-    console.log("Constructor person");
-    this.inputEle=React.createRef();
+    this.inputElement = React.createRef();
   }
 
   UNSAFE_componentWillMount() {
-    console.log("Person.js Will Mount");
+    //console.log("Person.js Will Mount");
   }
 
   // static getDerivedStateFromProps(props, state) {
-  //   console.log("Person.js getDerivedFromState");
+  //   //console.log("Person.js getDerivedFromState");
   // }
 
   componentDidMount() {
-    console.log("Person.js DID Mount");
+    //console.log("Person.js DID Mount");
+    //console.log(this.inputElement);
     if (this.props.position === 0) {
-      this.inputEle.current.focus();
+      this.inputElement.current.focus();
     }
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log("Person.js component will receive props");
+    //console.log("Person.js component will receive props");
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("Person.js shouldcomponentupdate");
+    //console.log("Person.js shouldcomponentupdate");
     return true;
   }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
-    console.log("Person.js componentwillupdate");
+    //console.log("Person.js componentwillupdate");
   }
   componentDidUpdate() {
-    console.log("Person.js componentdidupdate");
+    //console.log("Person.js componentdidupdate");
   }
 
   render() {
-    console.log("Person.js render");
+    //console.log("Person.js render");
     return (
-      <Aux className="Person">
+      <div className="Person">
+        <AuthContext.Consumer>
+          {aut => (aut ? <p>I'm Auth</p> : <p>Not Auth</p>)}
+        </AuthContext.Consumer>
         <p onClick={this.props.click}>
           Hwy guyz {this.props.name} my age is {this.props.age} .
         </p>
         <input
-          ref={this.inputEle}
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
+          ref={this.inputElement}
         />
-      </Aux>
+      </div>
     );
   }
 }
